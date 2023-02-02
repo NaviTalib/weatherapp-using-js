@@ -1,0 +1,50 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin:0;
+    background-image: url("./img/2942776.jpg");
+}
+
+
+.box {
+
+    background:#537aa17c;
+    color:rgb(5, 5, 66);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.weather{
+    font-size: large;
+    font-weight: bold;
+}
+
+input{
+    padding:5px;
+    width:70%;
+    background:#cae3f071;
+    border-radius:0.5rem;
+    border-color:#cae3f071 ;
+    color:rgb(5, 5, 66);
+    margin: 1rem;
+    text-align: center;
+
+
+}
+
+button{
+    padding:5px;
+    background:#cae3f071;
+    border-radius:0.5rem;
+    border-color:#cae3f071 ;
+
+}
+button:hover{
+    color:blue ;
+}
+

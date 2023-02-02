@@ -15,7 +15,14 @@
             ).then(
                 function(data){
                     // console.log(data.main.temp-273.15);
-                    document.getElementById("result").textContent= `Weather in ${city} is ${(data.main.temp-273.15).toFixed(2)} C`;
+                    // console.log(city);
+                    // console.log(data.weather[0].description)
+                    document.getElementById("cityname").textContent=`Weather in ${city.toUpperCase()}`;
+                    document.getElementById("temp").textContent=`${((data.main.temp-273.15).toFixed(2))}°C`;
+                    document.getElementById("description").textContent=`${data.weather[0].description}`;
+                    document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
+                    document.getElementById("wind_speed").textContent= `Wind speed: ${data.wind.speed} m/s`;
+
                 }
             );
         

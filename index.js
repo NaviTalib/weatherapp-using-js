@@ -1,30 +1,30 @@
+function getWeather() {
+  let city = document.getElementById("cityName").value;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1c9a12c1a14bd58da62327c21dfd80f0`;
 
-    function getWeather(){
+ 
+    fetch(url)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
 
-        event.preventDefault();
-        let city = document.getElementById('city').value
+        // console.log(Math.floor(data.main.temp - 273.15));
+        // console.log(data.weather[0].main);
+        // console.log(data.weather[0].description);
+        const icon = data.weather[0].icon;
+        const imgURL = "https://openweathermap.org/img/wn/" + icon +"@2x.png";
+        document.getElementById('wicon').setAttribute('src',imgURL);
+        console.log(imgURL)
+        document.getElementById('temp').innerHTML= `${Math.floor(data.main.temp - 273.15)}  °C`;
+        document.getElementById('city').innerHTML = `${data.name}`;
+        document.getElementById('humidity').innerHTML =`${data.main.humidity} %`;
+        document.getElementById('wind').innerHTML =`${data.wind.speed} m/s`;
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1c9a12c1a14bd58da62327c21dfd80f0`;
 
-        fetch(url)
-            .then(
-                function(res){
-                  return   res.json();
-        
-            }
-            ).then(
-                function(data){
-                    // console.log(data.main.temp-273.15);
-                    // console.log(city);
-                    // console.log(data.weather[0].description)
-                    document.getElementById("cityname").textContent=`Weather in ${city.toUpperCase()}`;
-                    document.getElementById("temp").textContent=`${((data.main.temp-273.15).toFixed(2))}°C`;
-                    document.getElementById("description").textContent=`${data.weather[0].description}`;
-                    document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
-                    document.getElementById("wind_speed").textContent= `Wind speed: ${data.wind.speed} m/s`;
 
-                }
-            );
-        
-
-    }
